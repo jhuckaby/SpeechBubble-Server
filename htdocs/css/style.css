@@ -1,0 +1,198 @@
+/* Styles for SpeechBubble */
+/* Theme colors: #3f7ed5, #5890db, #7cafda, #9ccffa */
+
+#d_header_logo {
+	position: relative;
+	width: 37px;
+	height: 40px;
+	background: url(../images/logo-128.png) no-repeat center center;
+	background-size: 34px 34px;
+}
+
+/* Menus */
+
+.subtitle_menu {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	cursor: pointer;
+	outline: none;
+	border: none;
+	
+	font-size: 12px;
+	font-weight: bold;
+	color: #999;
+	
+	max-width: 100px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;	
+}
+.subtitle_menu:hover {
+	color: #3f7ed5;
+}
+
+/* Data Table Row Colors */
+
+.data_table tr.plain td, .swatch.plain {
+	background-color: #efefef;
+	/* background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%); */
+}
+.data_table tr.red td, .swatch.red {
+	background-color: #ffe0e0;
+	/* background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%); */
+}
+.data_table tr.green td, .swatch.green {
+	background-color: #d8ffd8;
+	/* background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%); */
+}
+.data_table tr.blue td, .swatch.blue {
+	background-color: #e0f0ff;
+	/* background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%); */
+}
+.data_table tr.skyblue td, .swatch.skyblue {
+	background-color: #e0ffff;
+	/* background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%); */
+}
+.data_table tr.yellow td, .swatch.yellow {
+	background-color: #ffffd0;
+	/* background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%); */
+}
+.data_table tr.purple td, .swatch.purple {
+	background-color: #ffe0ff;
+	/* background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%); */
+}
+.data_table tr.orange td, .swatch.orange {
+	background-color: #ffe8d0;
+	/* background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%); */
+}
+
+/* Misc */
+
+.link.addme {
+	/*font-weight: normal !important;*/
+	font-weight: bold;
+	color: #777;
+	margin-left: 5px;
+	text-decoration: none !important;
+}
+.link.addme:hover {
+	text-decoration: underline !important;
+}
+
+.swatch {
+	float: left;
+	width: 50px;
+	height: 20px;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	margin: 1px;
+	/* background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 100%) !important; */
+	cursor: pointer;
+}
+.swatch:hover {
+	border: 1px solid #ddd;
+}
+.swatch.active {
+	border: 1px solid #888;
+}
+
+tr.collapse {
+	display: none;
+}
+
+/* Password Stuff */
+
+.password_toggle {
+	display: inline-block;
+	width: 32px;
+	line-height: 15px;
+	font-size: 11px;
+	padding-left: 5px;
+}
+
+/* Table Pagination Spacing Fix */
+
+div.pagination > table tr td {
+	white-space: nowrap;
+}
+
+div.caption { 
+	max-width: 600px;
+}
+
+/* Subtitle Widget Adjustments */
+
+.subtitle_widget a, .subtitle_widget span.link {
+	color: #777;
+	text-decoration: none;
+}
+.subtitle_widget a:hover, .subtitle_widget span.link:hover {
+	text-decoration: underline;
+	color: #036;
+}
+
+/* Color Labels */
+
+span.color_label {
+	border-radius: 5px;
+	padding: 2px 4px 2px 4px;
+	color: #fff;
+	font-size: 11px;
+	font-weight: bold;
+	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5);
+	cursor: default;
+}
+span.color_label.voice { background: #44bb44; }
+span.color_label.halfop { background: #bbbb44; }
+span.color_label.op { background: #bb4444; }
+span.color_label.founder { background: #bb44bb; }
+
+span.color_label.standard { background: #999999; }
+span.color_label.admin { background: #5b9bd1; }
+
+span.color_label.private { background: #bb4444; }
+span.color_label.public { background: #44bb44; }
+
+span.color_label.online { background: #44bb44; }
+span.color_label.offline { background: #999999; }
+
+span.color_label.suspended { background: #bb4444; }
+span.color_label.active { background: #44bb44; }
+
+/* My Account */
+
+#d_ma_image {
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}
+
+/* Emoji */
+
+.emoji_thumb {
+	width: 32px;
+	height: 32px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}
+
+/* Dark Theme */
+
+body.dark span.color_label.voice { background: rgb(0, 108, 0); }
+body.dark span.color_label.halfop { background: rgb(108, 108, 0); }
+body.dark span.color_label.op { background: rgb(108, 0, 0); }
+body.dark span.color_label.founder { background: rgb(108, 0, 108); }
+
+body.dark span.color_label.standard { background: rgb(73, 73, 73); }
+body.dark span.color_label.admin { background: rgb(11, 75, 129); }
+
+body.dark span.color_label.private { background: rgb(108, 0, 0); }
+body.dark span.color_label.public { background: rgb(0, 108, 0); }
+
+body.dark span.color_label.online { background: rgb(0, 108, 0); }
+body.dark span.color_label.offline { background: rgb(73, 73, 73); }
+
+body.dark span.color_label.suspended { background: rgb(108, 0, 0); }
+body.dark span.color_label.active { background: rgb(0, 108, 0); }

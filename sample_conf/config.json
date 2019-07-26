@@ -1,0 +1,166 @@
+{
+	"base_app_url": "http://192.168.3.60:3012",
+	"email_from": "admin@localhost",
+	"smtp_hostname": "localhost",
+	"smtp_port": 25,
+	
+	"log_dir": "logs",
+	"log_filename": "[component].log",
+	"log_columns": ["hires_epoch", "date", "hostname", "pid", "component", "category", "code", "msg", "data"],
+	"log_archive_path": "logs/archives/[yyyy]/[mm]/[dd]/[filename]-[yyyy]-[mm]-[dd].log.gz",
+	"log_crashes": "1",
+	"pid_file": "logs/speechbubbled.pid",
+	"debug_level": 9,
+	"maintenance": "04:00",
+	"max_recent_channel_history": 100,
+	"max_message_content_length": 8192,
+	"enable_indexer": true,
+	
+	"bot_proxy": "http://127.0.0.1:3014",
+	
+	"client": {
+		"name": "SpeechBubble",
+		"debug": 1,
+		"privilege_list": [
+			{ "id": "admin", "title": "Administrator" },
+			{ "id": "create_channels", "title": "Create Channels" },
+			{ "id": "edit_channels", "title": "Edit Channels" },
+			{ "id": "delete_channels", "title": "Delete Channels" },
+			{ "id": "upload_files", "title": "Upload Files" },
+			{ "id": "manage_emoji", "title": "Manage Emoji" }
+		],
+		"status_map": {
+			"large_blue_circle": "Available",
+			"red_circle": "Away",
+			"no_entry_sign": "Do Not Disturb",
+			"clock4": "Be Right Back"
+		},
+		"emoji_shortcuts": {
+			":%": ":face_vomiting:"
+		}
+	},
+	
+	"Storage": {
+		"engine": "Filesystem",
+		"list_page_size": 50,
+		"concurrency": 4,
+		"transactions": true,
+		"trans_auto_recover": true,
+		"log_event_types": { "all":1 },
+		
+		"Filesystem": {
+			"base_dir": "data",
+			"key_namespaces": 1,
+			"raw_file_paths": 1,
+			"pretty": 1
+		}
+	},
+	
+	"Unbase": {
+		"indexes": {
+			"speech": {
+				"default_search_field": "content",
+				"fields": [
+					{
+						"id": "channel",
+						"source": "/channel_id",
+						"master_list": true
+					},
+					{
+						"id": "user",
+						"source": "/username",
+						"master_list": true
+					},
+					{
+						"id": "type",
+						"source": "/type",
+						"master_list": true
+					},
+					{
+						"id": "date",
+						"source": "/date",
+						"type": "date"
+					},
+					{
+						"id": "content",
+						"source": "/content",
+						"min_word_length": 3,
+						"max_word_length": 64,
+						"use_remove_words": true,
+						"use_stemmer": true,
+						"filter": "markdown"
+					},
+					{
+						"id": "tags",
+						"source": "/tags"
+					}
+				],
+				"remove_words": ["the", "of", "and", "a", "to", "in", "is", "you", "that", "it", "he", "was", "for", "on", "are", "as", "with", "his", "they", "I", "at", "be", "this", "have", "from", "or", "one", "had", "by", "word", "but", "not", "what", "all", "were", "we", "when", "your", "can", "said", "there", "use", "an", "each", "which", "she", "do", "how", "their", "if", "will", "up", "other", "about", "out", "many", "then", "them", "these", "so", "some", "her", "would", "make", "like", "him", "into", "time", "has", "look", "two", "more", "write", "go", "see", "number", "no", "way", "could", "people", "my", "than", "first", "water", "been", "call", "who", "oil", "its", "now", "find", "long", "down", "day", "did", "get", "come", "made", "may", "part"]
+			}
+		}
+	},
+	
+	"WebServer": {
+		"http_port": 3012,
+		"http_htdocs_dir": "htdocs",
+		"http_max_upload_size": 104857600,
+		"http_static_ttl": 31536000,
+		"http_static_index": "index.html",
+		"http_server_signature": "SpeechBubble 1.0",
+		"http_gzip_text": 1,
+		"http_timeout": 30,
+		"http_regex_json": "(text|javascript|js|json)",
+		"http_response_headers": {
+			"Access-Control-Allow-Origin": "*"
+		},
+		
+		"https": 1,
+		"https_port": 3013,
+		"https_cert_file": "conf/ssl.crt",
+		"https_key_file": "conf/ssl.key",
+		"https_force": 0,
+		"https_timeout": 30,
+		"https_header_detect": {
+			"Front-End-Https": "^on$",
+			"X-Url-Scheme": "^https$",
+			"X-Forwarded-Protocol": "^https$",
+			"X-Forwarded-Proto": "^https$",
+			"X-Forwarded-Ssl": "^on$"
+		},
+		
+		"greenlock_disabled": {
+			"version": "draft-11",
+			"server": "https://acme-v02.api.letsencrypt.org/directory",
+			"configDir": "/opt/speechbubble/conf/certs",
+			"approvedDomains": [ "home.speech.im" ],
+			"email": "jhuckaby@speech.im",
+			"agreeTos": true,
+			"communityMember": false,
+			"telemetry": false
+		}
+	},
+	
+	"User": {
+		"session_expire_days": 365,
+		"max_failed_logins_per_hour": 5,
+		"max_forgot_passwords_per_hour": 3,
+		"free_accounts": 0,
+		"sort_global_users": 1,
+		"use_bcrypt": 1,
+		
+		"email_templates": {
+			"welcome_new_user": "conf/emails/welcome_new_user.txt",
+			"changed_password": "conf/emails/changed_password.txt",
+			"recover_password": "conf/emails/recover_password.txt"
+		},
+		
+		"default_privileges": {
+			"admin": 0,
+			"create_channels": 0,
+			"edit_channels": 0,
+			"delete_channels": 0,
+			"upload_files": 1
+		}
+	}
+	
+}

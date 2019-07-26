@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Loading...</title>
+	<meta name="description" content="A simple chat app for teams and individuals.">
+	<meta name="author" content="Joseph Huckaby">
+	
+	<link rel="shortcut icon" href="/images/favicon.ico">
+	<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+	<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="theme-color" content="#ffffff">
+	
+	<!-- BUILD: COMBINE_STYLE_START -->
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<!-- BUILD: COMBINE_STYLE_END -->
+</head>
+
+<body>
+	<div id="d_message" class="message" style="display:none" onMouseUp="app.hideMessage(250)">
+		<div id="d_message_inner" class="message_inner"></div>
+	</div>
+	
+	<div id="d_header">
+		<div class="container">
+			<div id="d_header_logo" class="left"></div>
+			<div id="d_header_title" class="left"></div>
+			<div id="d_header_user_container" style="right"></div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="container">
+		
+		<div class="master_content_container">
+			<!-- Main Content Area -->
+			<div class="tab_bar" style="display:none">
+				<div id="tab_Login" class="tab inactive" style="display:none"><span class="content"></span></div>
+				<div id="tab_Home" class="tab inactive"><span class="content"><i class="fa fa-home">&nbsp;</i>Home</span></div>
+				<div id="tab_Channels" class="tab inactive"><span class="content"><i class="fa fa-comments">&nbsp;</i>Channels</span></div>
+				<div id="tab_Emoji" class="tab inactive"><span class="content"><i class="fa fa-smile-o">&nbsp;</i>Emoji</span></div>
+				<div id="tab_MyAccount" class="tab inactive"><span class="content"><i class="fa fa-user">&nbsp;</i>My Account</span></div>
+				<div id="tab_Admin" class="tab inactive" style="display:none"><span class="content"><i class="fa fa-lock">&nbsp;</i>Admin</span></div>
+				
+				<div class="clear"></div>
+			</div>
+			
+			<div id="main" class="main">
+				<div id="page_Home" style="display:none"></div>
+				<div id="page_Channels" style="display:none"></div>
+				<div id="page_Emoji" style="display:none"></div>
+				<div id="page_MyAccount" style="display:none"></div>
+				<div id="page_Admin" style="display:none"></div>
+				<div id="page_Login" style="display:none"></div>
+			</div>
+			
+		</div>
+		
+		<div id="d_footer">
+			<div class="left">
+				<a href="https://github.com/jhuckaby/SpeechBubble-Server" target="_blank">SpeechBubble</a> is
+				&copy; 2018 by <a href="http://pixlcore.com" target="_blank">PixlCore</a>. 
+				Released under the <a href="https://github.com/jhuckaby/SpeechBubble-Server/blob/master/LICENSE.md" target="_blank">MIT License</a>.
+			</div>
+			<div id="d_footer_version" class="right">
+				
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+	</div>
+	
+	<script src="js/external/jquery.min.js"></script>
+	<script src="js/external/zeroupload.min.js"></script>
+	
+	<!-- BUILD: COMBINE_SCRIPT_START -->
+	<script src="js/common/md5.js"></script>
+	<script src="js/common/oop.js"></script>
+	<script src="js/common/xml.js"></script>
+	<script src="js/common/tools.js"></script>
+	<script src="js/common/datetime.js"></script>
+	<script src="js/common/page.js"></script>
+	<script src="js/common/dialog.js"></script>
+	<script src="js/common/base.js"></script>
+	
+	<script src="js/app.js"></script>
+	<script src="js/pages/Base.class.js"></script>
+	<script src="js/pages/Home.class.js"></script>
+	<script src="js/pages/Login.class.js"></script>
+	<script src="js/pages/Channels.class.js"></script>
+	<script src="js/pages/Emoji.class.js"></script>
+	<script src="js/pages/MyAccount.class.js"></script>
+	<script src="js/pages/Admin.class.js"></script>
+	<script src="js/pages/admin/Users.js"></script>
+	<script src="js/pages/admin/APIKeys.js"></script>
+	<!-- BUILD: COMBINE_SCRIPT_END -->
+	
+	<script src="/api/app/config?callback=app.receiveConfig"></script>
+
+</body>
+</html>

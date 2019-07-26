@@ -1,0 +1,93 @@
+{
+	"storage": [
+		[ "put", "users/admin", {
+			"username": "admin",
+			"nickname": "Admin",
+			"password": "$2a$10$VAF.FNvz1JqhCAB5rCh9GOa965eYWH3fcgWIuQFAmsZnnVS/.ye1y",
+			"full_name": "Administrator",
+			"email": "admin@speechbubble.im",
+			"active": 1,
+			"modified": 1434125333,
+			"created": 1434125333,
+			"salt": "salty",
+			"privileges": {
+				"admin": 1
+			}
+		} ],
+		[ "listCreate", "global/users", { "page_size": 100 } ],
+		[ "listPush", "global/users", { "username": "admin" } ],
+		[ "listCreate", "global/channels", {} ],
+		[ "listPush", "global/channels", {
+			"id": "lobby",
+			"title": "Lobby",
+			"enabled": 1,
+			"private": 0,
+			"founder": "admin",
+			"modified": 1434125333,
+			"created": 1434125333,
+			"topic": "For chats that don't fit anywhere else.",
+			"users": { "admin": { "admin": 1 } }
+		} ],
+		[ "listCreate", "global/api_keys", {} ],
+		[ "listCreate", "global/emoji", {} ]
+	],
+	
+	"build": {
+		"common": [
+			[ "symlinkCompress", "node_modules/jquery/dist/jquery.min.js", "htdocs/js/external/" ],
+			[ "symlinkCompress", "node_modules/jquery/dist/jquery.min.map", "htdocs/js/external/" ],
+			
+			[ "symlinkCompress", "node_modules/zeroupload/zeroupload.min.js", "htdocs/js/external/" ],
+			
+			[ "symlinkCompress", "node_modules/font-awesome/css/font-awesome.min.css", "htdocs/css/" ],
+			[ "symlinkCompress", "node_modules/font-awesome/css/font-awesome.css.map", "htdocs/css/" ],
+			[ "copyFiles", "node_modules/font-awesome/fonts/*", "htdocs/fonts/" ],
+			
+			[ "symlinkFile", "node_modules/pixl-webapp/js", "htdocs/js/common" ],
+			[ "symlinkFile", "node_modules/pixl-webapp/css/base.css", "htdocs/css/" ],
+			[ "copyFiles", "node_modules/pixl-webapp/fonts/*", "htdocs/fonts/" ],
+			
+			[ "chmodFiles", "755", "bin/*" ]
+		],
+		"dev": [
+			[ "deleteFiles", "htdocs/css/_combo*" ],
+			[ "deleteFiles", "htdocs/js/_combo*" ],
+			[ "deleteFile", "htdocs/index.html" ],
+			[ "deleteFile", "htdocs/index.html.gz" ],
+			[ "symlinkFile", "htdocs/index-dev.html", "htdocs/index.html" ],
+			[ "symlinkFile", "sample_conf", "conf" ]
+		],
+		"dist": [
+			[ "copyDir", "sample_conf", "conf", true ],
+			[ "copyFile", "htdocs/index-dev.html", "htdocs/index.html" ],
+			{
+				"action": "bundleCompress",
+				"uglify": true,
+				"header": "/* Copyright (c) PixlCore.com, MIT License. https://github.com/jhuckaby/SpeechBubble-Server */",
+				"dest_bundle": "htdocs/js/_combo.js",
+				"html_file": "htdocs/index.html",
+				"match_key": "COMBINE_SCRIPT",
+				"dest_bundle_tag": "<script src=\"js/_combo.js\"></script>"
+			},
+			{
+				"action": "bundleCompress",
+				"strip_source_maps": true,
+				"dest_bundle": "htdocs/css/_combo.css",
+				"html_file": "htdocs/index.html",
+				"match_key": "COMBINE_STYLE",
+				"dest_bundle_tag": "<link rel=\"stylesheet\" href=\"css/_combo.css\">"
+			},
+			{
+				"action": "printMessage",
+				"lines": [
+					"Welcome to SpeechBubble!",
+					"First time installing?  You should configure your settings in '/opt/speechbubble/conf/config.json'.",
+					"Then type: '/opt/speechbubble/bin/control.sh setup' to initialize storage.",
+					"Finally, to start the service, type: '/opt/speechbubble/bin/control.sh start'.",
+					"For full docs, please visit: http://github.com/jhuckaby/SpeechBubble-Server",
+					"Enjoy!"
+				]
+			}
+		]
+	}
+}

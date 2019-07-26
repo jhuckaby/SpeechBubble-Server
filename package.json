@@ -1,0 +1,53 @@
+{
+	"name": "speechbubble-server",
+	"version": "0.0.1",
+	"description": "A simple chat app for teams and individuals.",
+	"author": "Joseph Huckaby <jhuckaby@gmail.com>",
+	"homepage": "https://github.com/jhuckaby/SpeechBubble-Server",
+	"license": "MIT",
+	"main": "lib/main.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jhuckaby/SpeechBubble-Server"
+	},
+	"bugs": {
+		"url": "https://github.com/jhuckaby/SpeechBubble-Server/issues"
+	},
+	"keywords": [
+		"chat",
+		"im"
+	],
+	"dependencies": {
+		"async": "2.6.0",
+		"ws": "4.1.0",
+		"mkdirp": "0.5.1",
+		"glob": "5.0.15",
+		"uglify-js": "2.8.22",
+		"jquery": "3.3.1",
+		"zeroupload": "^1.0.0",
+		"font-awesome": "4.7.0",
+		"bcrypt-node": "0.1.0",
+		"gm": "1.23.0",
+		"getos": "2.8.4",
+		"mime": "2.3.1",
+		"sanitize-html": "1.18.2",
+		"greenlock-express": "2.4.10",
+		"pixl-args": "^1.0.0",
+		"pixl-cli": "^1.0.0",
+		"pixl-config": "^1.0.0",
+		"pixl-webapp": "^2.0.0",
+		"pixl-class": "^1.0.0",
+		"pixl-tools": "^1.0.0",
+		"pixl-logger": "^1.0.0",
+		"pixl-json-stream": "^1.0.0",
+		"pixl-request": "^1.0.0",
+		"pixl-mail": "^1.0.0",
+		"pixl-perf": "^1.0.0",
+		"pixl-server": "^1.0.0",
+		"pixl-server-storage": "^2.0.4",
+		"pixl-server-unbase": "^1.0.0",
+		"pixl-server-web": "^1.0.0",
+		"pixl-server-api": "^1.0.0",
+		"pixl-server-user": "^1.0.0"
+	}
+}
